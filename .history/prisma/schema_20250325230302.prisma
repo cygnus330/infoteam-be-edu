@@ -29,5 +29,5 @@ model User {
   uid  Int    @id @default(autoincrement())
   name String
 
-  post Post[]
+  post Post[] @relation(references: [pid])
 }

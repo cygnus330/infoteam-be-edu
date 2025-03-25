@@ -8,6 +8,6 @@ export class boardEditDto {
 export class boardSearchDto {
     title: string;
     text: string;
-
-    uname: number;
+    
+    uid: number;
 }

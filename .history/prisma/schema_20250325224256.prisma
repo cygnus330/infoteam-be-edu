@@ -22,12 +22,11 @@ model Post {
   text        String
 
   user        User     @relation(fields: [uid], references: [uid])
-  uid         Int
+  uid Int
 }
 
 model User {
   uid  Int    @id @default(autoincrement())
   name String
-
   post Post[]
 }

@@ -14,7 +14,6 @@ export class BoardService {
         return response.json({
             pid: pid
         }).status(200).send();
-        // return 301 or 200
     }
 
     async getBoard(id: number): Promise<Response> {
@@ -23,12 +22,11 @@ export class BoardService {
             return response.status(400).send();
         }
 
-        const get: boardSearchDto = await this.boardData.getPost(id);
+        const get = await this.boardData.getPost(id);
         return response.json({
             title: get.title,
-            text: get.text,
-            uname: get.uname
-        }).status(200).send();
+            text: get.text
+        }).send();
     }
 
     async putBoard(id: number, boardEditDto: boardEditDto): Promise<Response> {

@@ -3,32 +3,18 @@ import { boardEditDto, boardSearchDto } from './board.boardDto';
 
 import { boardData } from '../libs/data/boardData.service';
 import { Response, response } from 'express';
-import { text } from 'stream/consumers';
 
 @Injectable()
 export class BoardService {
     constructor(private boardData: boardData) {}
 
-    async postBoard(boardPostDto: boardEditDto): Promise<Response> {
+    async postBoard(boardPostDto: boardEditDto) {
         const pid = await this.boardData.insertPost(boardPostDto);
-        return response.json({
-            pid: pid
-        }).status(200).send();
-        // return 301 or 200
+        return pid;
     }
 
-    async getBoard(id: number): Promise<Response> {
-        const isExist = await this.boardData.isPostExist(id);
-        if(!isExist) {
-            return response.status(400).send();
-        }
-
-        const get: boardSearchDto = await this.boardData.getPost(id);
-        return response.json({
-            title: get.title,
-            text: get.text,
-            uname: get.uname
-        }).status(200).send();
+    async getBoard(id: number): Promise<void> {
+        await this.boardData.getPost(id);
     }
 
     async putBoard(id: number, boardEditDto: boardEditDto): Promise<Response> {
@@ -43,7 +29,6 @@ export class BoardService {
         }
 
         await this.boardData.updatePost(id, boardEditDto);
-        return response.status(200).send();
     }
 
     async deleteBoard(id: number, boardEditDto: boardEditDto) {

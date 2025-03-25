@@ -6,24 +6,24 @@ import { boardEditDto } from './board.boardDto';
 export class BoardController {
     constructor(private readonly boardService: BoardService) {}
 
+    @Get(':id')
+    getBoard(@Param('id') id: number, @Body() boardEditDto: boardEditDto) {
+        return this.boardService.getBoard(id, boardEditDto);
+    }
+
     @Post('')
     postBoard(@Body() boardPostDto: boardEditDto) {
         return this.boardService.postBoard(boardPostDto);
     }
 
-    @Get(':id')
-    getBoard(@Param('id') id: number) {
-        return this.boardService.getBoard(id);
+    @Delete(':id')
+    deleteBoard() {
+        
     }
 
     @Put(':id')
     putBoard() {
 
-    }
-
-    @Delete(':id')
-    deleteBoard() {
-        
     }
 }
 
