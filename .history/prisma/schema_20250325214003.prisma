@@ -13,18 +13,4 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
-  pid     Int      @id @default(autoincrement())
-  create  DateTime @default(now())
-  update  DateTime @updatedAt
-  title   String
-  text    String
-  user    User     @relation(fields: [userUid], references: [uid])
-  userUid Int
-}
-
-model User {
-  uid  Int    @id @default(autoincrement())
-  name String
-  post Post[]
-}
+model

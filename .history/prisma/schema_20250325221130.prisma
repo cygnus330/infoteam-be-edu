@@ -14,17 +14,16 @@ datasource db {
 }
 
 model Post {
-  pid     Int      @id @default(autoincrement())
-  create  DateTime @default(now())
-  update  DateTime @updatedAt
-  title   String
-  text    String
-  user    User     @relation(fields: [userUid], references: [uid])
-  userUid Int
+  pid Int @id @default(autoincrement())
+  create DateTime @default(now())
+  update DateTime @updatedAt
+  title String
+  text String
+  user User
 }
 
 model User {
-  uid  Int    @id @default(autoincrement())
+  uid Int @id @default(autoincrement())
   name String
   post Post[]
 }
