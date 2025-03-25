@@ -19,8 +19,7 @@ model Post {
   update  DateTime @updatedAt
   title   String
   text    String
-  user    User     @relation(fields: [uid], references: [uid])
-  uid Int
+  user    User
 }
 
 model User {
