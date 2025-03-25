@@ -22,8 +22,8 @@ export class BoardController {
     }
 
     @Delete(':id')
-    deleteBoard(@Param('id') id: number, @Body() boardDeleteDto: boardEditDto) {
-        return this.boardService.deleteBoard(id, boardDeleteDto);
+    deleteBoard(@Param('id') id: number) {
+        return this.boardService.deleteBoard(id);
     }
 }
 

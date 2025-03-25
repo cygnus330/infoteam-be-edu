@@ -13,6 +13,7 @@ export class BoardService {
         return response.json({
             pid: pid
         }).status(200).send();
+        // return 301 or 200
     }
 
     async getBoard(id: number): Promise<Response> {
@@ -44,7 +45,7 @@ export class BoardService {
         return response.status(200).send();
     }
 
-    async deleteBoard(id: number, boardEditDto: boardEditDto) {
+    async deleteBoard(id: number) {
         const isExist = await this.boardData.isPostExist(id);
         if(!isExist) {
             return response.status(400).send();
@@ -54,8 +55,5 @@ export class BoardService {
         if(post_uid !== boardEditDto.uid) {
             return response.status(403).send();
         }
-
-        await this.boardData.deletePost(id);
-        return response.status(200).send();
     }
 }
