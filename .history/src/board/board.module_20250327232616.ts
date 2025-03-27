@@ -6,7 +6,7 @@ import { BoardRepository } from './board.repository';
 import { PrismaModule } from 'src/prisma/prisma.module';
 
 @Module({
-  imports: [PrismaModule],
+  imports: [],
   controllers: [BoardController],
   providers: [BoardService, BoardRepository]
 })
